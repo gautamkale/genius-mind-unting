@@ -1,0 +1,1 @@
+https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=81ao9lzlr0n3ac&scope=r_basicprofile&state=fd3c6997b0d4aa461ae26cef958655a3&redirect_uri=https%3A//technolife.auth0.com/login/callback
