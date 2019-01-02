@@ -1,0 +1,155 @@
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Email validation</title>
+
+    /*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/
+</head>
+<body>
+<div class="container">
+    /*/ <th:block th:include="fragments/header :: header"></th:block> /*/
+
+    <h2>Validate Email</h2>
+    <div>
+        <form class="form-horizontal"  th:action="@{/validate}" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email IDs:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name= "emails"/>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Email validation</title>
+
+    /*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/
+</head>
+<body>
+<div class="container">
+    /*/ <th:block th:include="fragments/header :: header"></th:block> /*/
+
+    <h2>Validate Email</h2>
+    <div>
+        <form class="form-horizontal"  th:action="@{/validate}" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Organization</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name= "org"/>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label">domain</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name= "domain"/>
+                </div>
+            </div>
+         <div class="form-group">     
+            <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+  			<input type="checkbox" name="vehicle" value="Car" checked="checked">
+  		</div>
+            <div class="row">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html> -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Email validation</title>
+
+  <th:block th:include="fragments/headerinc :: head"></th:block> 
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myText").value;
+  var d = document.getElementById("myDomain").value;
+   // Get the checkbox
+  var fcheckBox = document.getElementById("fName");
+  var lcheckBox = document.getElementById("lName");
+  // Get the output text
+  var e = document.getElementById("fomrat");
+  var fomrat = e.options[e.selectedIndex].value;
+  var text = document.getElementById("demo");
+	var lines = document.getElementById("myText").value.split('\n');
+
+	for (var i = 0; i < lines.length; i++) {
+			var fName = lines[i].split(' ')[0];
+			var lName = lines[i].split(' ')[1];
+			if (fomrat == "flast") {
+				var userIds = fName.charAt(0).toLowerCase() + '' + lName.toLowerCase()  + '@' + d + "</br>";
+				var text = userIds.replace(/\r?\n/g, '<br />');
+				document.getElementById("result").innerHTML += text;
+
+			}else if(fomrat =="first.last"){
+					var userIds = fName.toLowerCase() + '.' + lName.toLowerCase()  + '@' + d + "</br>";
+				var text = userIds.replace(/\r?\n/g, '<br />');
+				document.getElementById("result").innerHTML += text;
+			}else if(fomrat =="f.last"){
+					var userIds = fName.charAt(0).toLowerCase() + '.' + lName.toLowerCase()  + '@' + d + "</br>";
+				var text = userIds.replace(/\r?\n/g, '<br />');
+				document.getElementById("result").innerHTML += text;
+			}else if(fomrat =="lastf"){
+					var userIds = lName.toLowerCase() + fName.toLowerCase().charAt(0)  + '@' + d + "</br>";
+				var text = userIds.replace(/\r?\n/g, '<br />');
+				document.getElementById("result").innerHTML += text;
+				
+				
+			}
+		}
+		// If the checkbox is checked, display the output text
+
+		/*  if (fcheckBox.checked == true){
+		  document.getElementById("demo").innerHTML = fName.charAt(0)+''+lName +'@'+d;
+		 } else if(lcheckBox.checked == true) {
+		  document.getElementById("demo").innerHTML = fName+''+lName.charAt(0) +'@'+d;
+		 }else{
+		    alert('Please check firstname or lastname.');
+		 } */
+	}
+</script>
+</head>
+<body>
+<div class="container">
+
+<textarea rows="10" cols="50"  id="myText"></textarea>
+
+<!-- <input type="text" id="myText" value="" placeholder="Firstname Lastname"> -->
+&nbsp;
+<input type="text" id="myDomain" value="" placeholder="Domain Name">
+&nbsp;&nbsp;&nbsp;
+<select id="fomrat">
+  <option value="flast">flast</option>
+  <option value="first.last">first.last</option>
+  <option value="f.last">f.last</option>
+  <option value="lastf">lastf</option>
+</select>
+ <input type="checkbox" id="fName">
+<!-- <br/>
+
+firstlast: <input type="checkbox" id="lName">
+<br/><br/> -->
+
+<button onclick="myFunction()">Submit</button>
+<br>
+<p id="result"></p>
+
+</div>
+</body>
+</html>
